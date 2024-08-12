@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets Universitaires</title>
+  <link rel="icon" href="webLog.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Gupter', serif;
+      background-color: lightgray;
+      color: #333;
+    }
+    h1.title {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 20px;
+    }
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #333;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: darkcyan;
+      color: white;
+    }
+    #form-container {
+      width: 80%;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      border: 1px solid #333;
+    }
+    button {
+      background-color: darkcyan;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">Mes futurs projets universitaires en informatique</h1>
+
+  <div id="form-container">
+    <h2>Ajouter un nouveau projet</h2>
+    <input type="text" id="projectTitle" placeholder="Titre du projet">
+    <input type="text" id="projectDescription" placeholder="Description">
+    <input type="text" id="projectDate" placeholder="Date prévue">
+    <input type="text" id="projectTechnologies" placeholder="Technologies utilisées">
+    <button onclick="addProject()">Ajouter le projet</button>
+  </div>
+
+  <table id="projectsTable">
+    <thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    function addProject() {
+      // Récupère les valeurs des inputs
+      var title = document.getElementById("projectTitle").value;
+      var description = document.getElementById("projectDescription").value;
+      var date = document.getElementById("projectDate").value;
+      var technologies = document.getElementById("projectTechnologies").value;
+
+      // Vérifie que tous les champs sont remplis
+      if (title === "" || description === "" || date === "" || technologies === "") {
+        alert("Veuillez remplir tous les champs.");
+        return;
+      }
+
+      // Sélectionne le tableau et crée une nouvelle ligne
+      var table = document.getElementById("projectsTable").getElementsByTagName('tbody')[0];
+      var newRow = table.insertRow();
+
+      // Ajoute les cellules et remplit avec les données
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+      var cell4 = newRow.insertCell(3);
+
+      cell1.innerHTML = title;
+      cell2.innerHTML = description;
+      cell3.innerHTML = date;
+      cell4.innerHTML = technologies;
+
+      // Efface les champs de saisie après l'ajout
+      document.getElementById("projectTitle").value = "";
+      document.getElementById("projectDescription").value = "";
+      document.getElementById("projectDate").value = "";
+      document.getElementById("projectTechnologies").value = "";
+    }
+  </script>
+</body>
+</html>
